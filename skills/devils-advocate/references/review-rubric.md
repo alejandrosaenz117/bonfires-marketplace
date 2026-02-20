@@ -320,7 +320,7 @@ dependencies:
 @app.post("/analyze")
 def analyze_user_text(user_input):
     response = claude.messages.create(
-        model="claude-3-sonnet-20240229",
+        model="claude-sonnet-4-6",
         max_tokens=1024,
         system="You are a helpful assistant.",
         messages=[{
