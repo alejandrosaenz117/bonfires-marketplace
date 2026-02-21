@@ -1,12 +1,12 @@
 {
-  "description": "Auto-engage The Devil's Advocate after planning sessions",
+  "description": "Suggest adversarial review after planning sessions",
   "hooks": {
     "Stop": [
       {
         "hooks": [
           {
             "type": "command",
-            "command": "jq -r '.last_assistant_message' 2>/dev/null | grep -qi 'ready to code' && echo '{\"decision\": \"block\", \"reason\": \"Planning just completed. Now engage the devils-advocate agent to challenge this plan — find the most plausible security failure or architectural collapse in what was just proposed. This is critical.\"}' || exit 0"
+            "command": "jq -r '.last_assistant_message' 2>/dev/null | grep -qi 'ready to code' && echo '{\"additionalContext\": \"Planning session complete. Consider asking for an adversarial review: \\\"What could go wrong with this plan?\\\" or \\\"/devils-advocate [plan-description]\\\" to engage The Devil's Advocate and challenge the assumptions.\"}' || exit 0"
           }
         ]
       }
