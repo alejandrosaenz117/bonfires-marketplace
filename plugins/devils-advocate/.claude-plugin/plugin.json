@@ -1,0 +1,12 @@
+{
+  "name": "devils-advocate",
+  "description": "Adversarial security and architectural code review. Finds the most plausible security failure in your code.",
+  "author": {
+    "name": "Alejandro Saenz",
+    "url": "https://github.com/alejandrosaenz117"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/alejandrosaenz117/bonfires-marketplace",
+  "repository": "https://github.com/alejandrosaenz117/bonfires-marketplace",
+  "keywords": ["security", "code-review", "adversarial", "architecture", "threat-modeling"]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "bonfires-marketplace",
+  "owner": {
+    "name": "Alejandro Saenz"
+  },
+  "metadata": {
+    "description": "A marketplace of adversarial code review plugins. Sites of grace where you gather tools before facing the darkness."
+  },
+  "plugins": [
+    {
+      "name": "devils-advocate",
+      "source": "./plugins/devils-advocate",
+      "description": "Adversarial security and architectural code review. Finds the most plausible security failure in your code.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Alejandro Saenz"
+      },
+      "homepage": "https://github.com/alejandrosaenz117/bonfires-marketplace",
+      "repository": "https://github.com/alejandrosaenz117/bonfires-marketplace",
+      "license": "MIT",
+      "keywords": [
+        "security",
+        "code-review",
+        "adversarial",
+        "architecture",
+        "threat-modeling"
+      ],
+      "category": "security"
+    }
+  ]
+}
