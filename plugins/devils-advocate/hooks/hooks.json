@@ -1,13 +1,12 @@
 {
   "description": "Auto-engage The Devil's Advocate after planning sessions",
   "hooks": {
-    "SubagentStop": [
+    "Stop": [
       {
-        "matcher": "Plan",
         "hooks": [
           {
             "type": "command",
-            "command": "echo '{\"additionalContext\": \"A planning session just completed. Now engage the devils-advocate agent to challenge the plan and find the most plausible security failure or architectural collapse in what was just proposed.\"}'"
+            "command": "jq -r '.last_assistant_message' 2>/dev/null | grep -qi 'ready to code' && echo '{\"decision\": \"block\", \"reason\": \"Planning just completed. Now engage the devils-advocate agent to challenge this plan — find the most plausible security failure or architectural collapse in what was just proposed. This is critical.\"}' || exit 0"
           }
         ]
       }
