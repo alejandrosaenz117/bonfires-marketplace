@@ -6,8 +6,8 @@
         "matcher": "Plan",
         "hooks": [
           {
-            "type": "prompt",
-            "prompt": "A planning session just completed. The plan has been presented to the user. Now use the devils-advocate agent to challenge the plan — find the most plausible security failure or architectural collapse in what was just proposed. Do not skip this step. Engage the devils-advocate agent now. Hook context: $ARGUMENTS"
+            "type": "command",
+            "command": "echo '{\"additionalContext\": \"A planning session just completed. Now engage the devils-advocate agent to challenge the plan and find the most plausible security failure or architectural collapse in what was just proposed.\"}'"
           }
         ]
       }
