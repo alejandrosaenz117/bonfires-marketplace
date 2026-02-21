@@ -1,12 +1,12 @@
 {
   "description": "Suggest adversarial review after planning sessions",
   "hooks": {
-    "Stop": [
+    "TaskCompleted": [
       {
         "hooks": [
           {
             "type": "command",
-            "command": "echo '{\"additionalContext\":\"[Devil's Advocate Hook] Consider an adversarial review: What could go wrong with this? Try /devils-advocate to challenge assumptions.\"}'"
+            "command": "echo '{\"additionalContext\":\"[Devil\\'s Advocate Hook] Plan completed. Consider an adversarial review: What could go wrong with this? Try /devils-advocate to challenge assumptions.\"}'"
           }
         ]
       }
