@@ -2,9 +2,13 @@
   "name": "osv-scanner",
   "version": "0.1.0",
   "description": "Scans project dependencies for known vulnerabilities using OSV Scanner and the OSV database.",
-  "author": "alejandrosaenz117",
+  "author": {
+    "name": "Alejandro Saenz",
+    "url": "https://github.com/alejandrosaenz117"
+  },
   "license": "MIT",
   "homepage": "https://github.com/google/osv-scanner",
+  "repository": "https://github.com/alejandrosaenz117/bonfires-marketplace",
   "keywords": ["security", "vulnerabilities", "dependencies", "osv", "scanning"],
   "mcpServers": {
     "osv-scanner": {
