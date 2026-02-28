@@ -1,10 +1,6 @@
 ---
-name: osv-scanner scan
-description: Scan a directory or file for vulnerable dependencies
-tools:
-  - MCP:osv-scanner/scan_vulnerable_dependencies
-  - MCP:osv-scanner/get_vulnerability_details
-model: inherit
+description: Scan a directory or file for vulnerable dependencies using OSV Scanner. Reports known vulnerabilities in packages and lockfiles.
+argument-hint: [path]
 ---
 
 # Scan for Vulnerable Dependencies

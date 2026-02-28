@@ -1,25 +1,6 @@
 ---
 name: osv-scanner
-model: inherit
-tools:
-  - MCP:osv-scanner/scan_vulnerable_dependencies
-  - MCP:osv-scanner/get_vulnerability_details
-triggers:
-  - keywords:
-      - "check dependencies"
-      - "check my dependencies"
-      - "scan for vulnerabilities"
-      - "scan dependencies"
-      - "are my dependencies safe"
-      - "are my packages vulnerable"
-      - "check for vulnerabilities"
-      - "check for CVEs"
-      - "dependency audit"
-      - "dependency security"
-      - "vulnerable packages"
-      - "vulnerable dependencies"
-      - "security audit"
-      - "audit my dependencies"
+description: This skill should be triggered when the user asks about dependency security, vulnerability scanning, or package safety. Examples: "check my dependencies for vulnerabilities", "scan my packages", "are my dependencies safe", "dependency audit", "check for CVEs", "security audit", "vulnerable packages", "scan dependencies for vulnerabilities".
 ---
 
 # Scan Dependencies for Vulnerabilities
