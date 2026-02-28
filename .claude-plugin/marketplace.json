@@ -26,6 +26,26 @@
         "threat-modeling"
       ],
       "category": "security"
+    },
+    {
+      "name": "osv-scanner",
+      "source": "./plugins/osv-scanner",
+      "description": "Scans project dependencies for known vulnerabilities using OSV Scanner and the OSV database.",
+      "version": "0.1.0",
+      "author": {
+        "name": "Alejandro Saenz"
+      },
+      "homepage": "https://github.com/google/osv-scanner",
+      "repository": "https://github.com/alejandrosaenz117/bonfires-marketplace",
+      "license": "MIT",
+      "keywords": [
+        "security",
+        "vulnerabilities",
+        "dependencies",
+        "osv",
+        "scanning"
+      ],
+      "category": "security"
     }
   ]
 }
