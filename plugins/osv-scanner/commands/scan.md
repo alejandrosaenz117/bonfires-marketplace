@@ -1,5 +1,5 @@
 ---
-description: Scan a directory or file for vulnerable dependencies using OSV Scanner. Reports known vulnerabilities in packages and lockfiles.
+description: Scan a directory or lockfile for vulnerable dependencies using OSV Scanner. Reports known vulnerabilities in packages and lockfiles.
 argument-hint: [path]
 ---
 
@@ -10,7 +10,7 @@ Usage: `/osv-scanner scan [path]`
 Scans a directory or lockfile for known vulnerabilities in dependencies.
 
 **Parameters:**
-- `path` — Directory or file to scan (defaults to current workspace root)
+- `path`: Directory or file to scan (defaults to current workspace root)
 
 **Examples:**
 - `/osv-scanner scan .`

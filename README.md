@@ -2,7 +2,7 @@
 
 # Bonfires Marketplace
 
-A marketplace of Claude Code plugins focused on adversarial security and architectural code review.
+A marketplace of Claude Code plugins for security-focused development: adversarial code review, dependency vulnerability scanning, and reachability triage.
 
 ## Installation
 
@@ -12,10 +12,11 @@ A marketplace of Claude Code plugins focused on adversarial security and archite
 /plugin marketplace add alejandrosaenz117/bonfires-marketplace
 ```
 
-**2) Install The Devil's Advocate:**
+**2) Install a plugin:**
 
 ```bash
 /plugin install devils-advocate@bonfires-marketplace
+/plugin install osv-scanner@bonfires-marketplace
 ```
 
 ## What's Inside
@@ -27,6 +28,14 @@ The tenth man. When consensus forms, it is a sign of danger. This plugin peers i
 **Invoke:** Mention "adversarial review" or "challenge the plan" as a skill, or use `/devils-advocate [file|description|recent]` command.
 
 See [plugins/devils-advocate/README.md](plugins/devils-advocate/README.md) for full documentation.
+
+### OSV Scanner
+
+Integrates OSV Scanner as an MCP server, giving Claude direct access to the OSV vulnerability database. Scans your dependencies for known CVEs, fetches full advisories, and uses grep-based reachability triage to estimate which vulnerabilities actually live in your code paths.
+
+**Invoke:** Mention "check my dependencies for vulnerabilities" or "scan for CVEs" as a skill, or use `/osv-scanner scan [path]` and `/osv-scanner triage [path]` commands.
+
+See [plugins/osv-scanner/README.md](plugins/osv-scanner/README.md) for full documentation.
 
 ## Philosophy
 

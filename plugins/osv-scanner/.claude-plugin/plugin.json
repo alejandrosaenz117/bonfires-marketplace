@@ -7,9 +7,17 @@
     "url": "https://github.com/alejandrosaenz117"
   },
   "license": "MIT",
-  "homepage": "https://github.com/google/osv-scanner",
+  "homepage": "https://github.com/alejandrosaenz117/bonfires-marketplace",
   "repository": "https://github.com/alejandrosaenz117/bonfires-marketplace",
-  "keywords": ["security", "vulnerabilities", "dependencies", "osv", "scanning"],
+  "keywords": [
+    "security",
+    "vulnerabilities",
+    "dependencies",
+    "osv",
+    "scanning",
+    "SCA",
+    "software composition analysis"
+  ],
   "mcpServers": {
     "osv-scanner": {
       "command": "osv-scanner",
