@@ -1,5 +1,5 @@
 ---
-description: AI-powered reachability triage for dependency vulnerabilities. Scans for CVEs then searches your source code to estimate whether each vulnerable API is actually called. Outputs a prioritized LIKELY_REACHABLE / UNCERTAIN / LIKELY_UNREACHABLE report.
+description: AI-powered reachability triage for dependency vulnerabilities. Scans for CVEs then searches your source code to estimate whether each vulnerable API is actually called. Outputs a prioritized FOUND_IN_SOURCE / UNCERTAIN / NOT_FOUND_IN_GREP report.
 argument-hint: [path]
 allowed-tools: Read, Glob, Grep
 ---
@@ -22,7 +22,7 @@ This is **LLM-estimated static analysis**, not deterministic call graph tracing.
 - Human security review
 - Dynamic testing and runtime behavior analysis
 
-Treat **LIKELY_UNREACHABLE** as lower priority, but not safe to ignore completely.
+**NOT_FOUND_IN_GREP = absence of evidence, not evidence of absence.** Transitive dependencies and dynamic code patterns may be reachable even when not detected by static grep search. Always treat CRITICAL/HIGH severity CVEs with caution.
 
 ---
 
@@ -31,30 +31,32 @@ Treat **LIKELY_UNREACHABLE** as lower priority, but not safe to ignore completel
 1. **Scan** — Run `scan_vulnerable_dependencies` on the provided path (defaults to workspace root)
 2. **Fetch details** — For each CVE, retrieve the full advisory to identify which functions/APIs are vulnerable
 3. **Search source code** — Use Glob and Grep to find whether those specific functions are imported or called in your codebase
-4. **Assign verdicts** — Classify each finding as LIKELY_REACHABLE, UNCERTAIN, or LIKELY_UNREACHABLE with evidence
+4. **Assign verdicts** — Classify each finding as FOUND_IN_SOURCE, UNCERTAIN, or NOT_FOUND_IN_GREP with evidence
 5. **Output triage report** — Three-tier structured table with reasoning for each verdict
 
 ---
 
 ## Verdict Definitions
 
-### LIKELY_REACHABLE
-The vulnerable function/method is **found in your source code**. This CVE should be prioritized for fixing.
-- Evidence: File path and line number where the vulnerable API is used
+### FOUND_IN_SOURCE
+The vulnerable function/method **was found via grep in your source code**. This CVE should be prioritized for fixing.
+- Evidence: Exact file path and line number where the vulnerable API was detected
 - Action: Upgrade the package, apply a patch, or change the code to avoid the vulnerable API
+- Confidence: High confidence, but always verify the code path manually
 
 ### UNCERTAIN
 The vulnerability **cannot be statically determined**. This includes:
 - Broad vulnerabilities affecting the entire package (not a specific function)
-- Dynamic code patterns (eval, dynamic require, reflection)
-- Transitive dependencies (dependencies of dependencies)
+- Dynamic code patterns (eval, dynamic require, reflection, metaprogramming)
+- Transitive dependencies (A→B→vulnerable C) — grep cannot follow call chains
+- Functions called through variable names or reflection
 - Action: Review the advisory and your code path manually; likely mid-to-high priority depending on risk
 
-### LIKELY_UNREACHABLE
-The vulnerable package is **not imported** or the vulnerable function is **not found in your code**. This CVE is lower priority.
-- Evidence: Package not imported at all, or imported but specific vulnerable API not found
-- Caveat: Dynamic patterns or transitive calls might still pose risk
-- Action: Monitor for updates; deprioritize unless the dependency is transitive and critical
+### NOT_FOUND_IN_GREP
+Grep did **not find evidence** of the vulnerable API in your source code. This CVE is lower priority.
+- Evidence: Package not imported at all, or imported but specific vulnerable API not found by grep
+- Caveat: **This is absence of evidence, not evidence of absence.** Dynamic patterns, transitive dependencies, or common function names may be missed
+- Action: Monitor for updates; deprioritize but do not ignore. CRITICAL/HIGH CVEs in this tier require manual review
 
 ---
 
@@ -69,25 +71,27 @@ The vulnerable package is **not imported** or the vulnerable function is **not f
 
 ```
 ## AI Reachability Triage Report
-> ⚠️ LLM-estimated heuristic — not deterministic call graph analysis
+> ⚠️ LLM-estimated heuristic — not a substitute for deterministic call graph analysis
+> FOUND_IN_SOURCE = grep match detected. NOT_FOUND_IN_GREP = absence of grep evidence, not proof of safety.
+> Transitive dependencies and dynamic patterns may be exploitable even when not found by static search.
 
-### LIKELY_REACHABLE — Fix First
+### FOUND_IN_SOURCE — Fix First
 | Package | Version | CVE | Severity | Evidence |
 |---------|---------|-----|----------|----------|
-| lodash | 4.17.20 | CVE-2021-23337 | HIGH | `_.template()` called in src/render.js:42 |
-| express | 4.17.1 | CVE-2022-24999 | MEDIUM | `express()` in server.js:8; uses `qs` vulnerable to prototype pollution |
+| lodash | 4.17.20 | CVE-2021-23337 | HIGH | src/render.js:42: _.template(userInput) |
+| express | 4.17.1 | CVE-2022-24999 | MEDIUM | server.js:8: express() with qs middleware |
 
 ### UNCERTAIN — Review Manually
 | Package | Version | CVE | Severity | Reason |
 |---------|---------|-----|----------|--------|
-| axios | 0.21.1 | CVE-2021-3749 | HIGH | Broad redirect handling vulnerability; all axios calls are potential vectors |
-| node-fetch | 2.6.5 | CVE-2022-33987 | MEDIUM | Dynamic URL construction detected; static analysis cannot determine if vulnerable |
+| axios | 0.21.1 | CVE-2021-3749 | HIGH | Transitive dependency; cannot verify via grep |
+| node-fetch | 2.6.5 | CVE-2022-33987 | MEDIUM | Dynamic URL construction; static analysis cannot determine |
 
-### LIKELY_UNREACHABLE — Low Priority
-| Package | Version | CVE | Severity | Evidence |
-|---------|---------|-----|----------|----------|
-| semver | 5.7.1 | CVE-2022-25883 | MEDIUM | Package only in devDependencies; not called in runtime code |
-| jest | 26.6.3 | CVE-2021-23364 | LOW | Test framework; CVE in dev-only utility |
+### NOT_FOUND_IN_GREP — Lower Priority
+| Package | Version | CVE | Severity | Evidence | Note |
+|---------|---------|-----|----------|----------|------|
+| semver | 5.7.1 | CVE-2022-25883 | MEDIUM | No grep match in runtime code | devDeps only |
+| jest | 26.6.3 | CVE-2021-23364 | CRITICAL | No grep match | ⚠️ CRITICAL: manual review recommended |
 ```
 
 ---
@@ -107,11 +111,13 @@ The vulnerable package is **not imported** or the vulnerable function is **not f
 
 ## Reasoning Rules
 
-- **LIKELY_REACHABLE requires positive evidence** — Don't assume; find the actual call site
+- **FOUND_IN_SOURCE requires positive evidence** — Report only actual grep matches with exact file:line citations. Never infer or assume code exists.
 - **When in doubt → UNCERTAIN** — False positives (flagging as reachable when unreachable) are better than false negatives (missing real exposures)
-- **Dynamic code patterns → UNCERTAIN** — eval, dynamic require, reflection, metaprogramming
-- **Transitive dependencies → UNCERTAIN** — Can't statically determine if the parent package uses the vulnerable API
-- **devDependencies-only → LIKELY_UNREACHABLE** — Unless the dev code runs in a security-sensitive context
+- **Dynamic code patterns → UNCERTAIN** — eval(), require(variable), __import__(), getattr(), dynamic imports, reflection, metaprogramming all bypass grep detection
+- **Transitive dependencies → always UNCERTAIN** — Grep cannot follow A→B→vulnerable C call chains. If a package is in the lockfile but not directly imported, classify all CVEs as UNCERTAIN regardless of grep results
+- **Dynamic pattern check required before NOT_FOUND_IN_GREP** — Before assigning NOT_FOUND_IN_GREP, grep source for `eval(`, `require(`, `__import__`, `importlib`, `getattr(`, `dynamic` in files that import the vulnerable package. If any dynamic patterns exist, upgrade verdict to UNCERTAIN
+- **CRITICAL/HIGH severity → mandatory review flag** — Regardless of verdict, any CVE with CRITICAL or HIGH severity marked NOT_FOUND_IN_GREP must include warning: "⚠️ CRITICAL/HIGH: Recommend manual review of transitive dependencies and dynamic patterns before deprioritizing"
+- **devDependencies-only → NOT_FOUND_IN_GREP** — Unless the dev code runs in a security-sensitive context (e.g., build server, CI/CD)
 - **Every finding gets a verdict** — No CVE is left without a classification
 
 ---
@@ -120,7 +126,7 @@ The vulnerable package is **not imported** or the vulnerable function is **not f
 
 1. **Run after scanning** — Always run `/osv-scanner scan [path]` first to understand the full vulnerability landscape
 2. **Cross-check with deterministic tools** — For Go/Rust, use osv-scanner's native `--call-analysis=go` for authoritative results
-3. **Use this for triage, not approval** — LIKELY_UNREACHABLE doesn't mean "safe to ignore forever," just "lower priority today"
+3. **Use this for triage, not approval** — NOT_FOUND_IN_GREP doesn't mean "safe to ignore forever," just "lower priority today"
 4. **Automate follow-up** — Integrate the triage report into your CI/CD to track reachability changes over time
 5. **Keep dependencies updated** — Even unreachable vulns become reachable if code patterns change
 
