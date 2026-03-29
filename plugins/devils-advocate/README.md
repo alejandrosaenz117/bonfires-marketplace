@@ -10,7 +10,7 @@ When consensus forms, it is a sign of danger. The Devil's Advocate challenges ce
 
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](../../LICENSE)
 [![Claude Code Plugin](https://img.shields.io/badge/Claude%20Code-Plugin-blueviolet.svg)](https://claude.ai/code)
-![Version 0.2.0](https://img.shields.io/badge/Version-0.2.0-green.svg)
+![Version 0.2.1](https://img.shields.io/badge/Version-0.2.1-green.svg)
 
 ---
 
@@ -103,6 +103,18 @@ Simulate one specific, devastating failure. The "unlikely" scenario your team is
 ### 4. The Mitigation Strategy
 
 Provide concrete architectural hardening. The ramparts required to survive the storm.
+
+---
+
+## What to Expect
+
+**Length:** Reviews are concise (300-600 words). The Devil's Advocate prioritizes specificity over verbosity. One piercing insight beats ten paragraphs of hedging.
+
+**Specificity:** Every claim is tied to code patterns and concrete attack scenarios. Generic advice like "improve error handling" is not acceptable.
+
+**Tone:** Clinical, direct. No hand-holding. You are reading the voice of someone watching your system fail.
+
+**No Reassurance:** The skill will never tell you "overall, this looks good." It will only tell you where it breaks.
 
 ---
 

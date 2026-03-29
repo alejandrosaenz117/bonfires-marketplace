@@ -60,6 +60,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## The Devil's Advocate Plugin
 
+## [0.2.1] - 2026-03-29
+
+### Changed
+
+- **Output conciseness:** Added strict constraints on section length (2-4 sentences max per section, 500 words total max)
+- **Specificity emphasis:** Updated tone guidance to prioritize "one piercing insight over ten paragraphs of hedging"
+- **Documentation:** Added "What to Expect" section in README clarifying output length, tone, and that generic advice is not acceptable
+
 ## [0.2.0] - 2026-02-20
 
 ### Changed
