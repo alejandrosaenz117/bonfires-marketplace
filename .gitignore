@@ -47,3 +47,6 @@ test-results/
 *.test
 *.spec
 .test-cache/
+
+# Superpowers docs (plans, specs, scratch work)
+docs/
