@@ -46,6 +46,24 @@
         "scanning"
       ],
       "category": "security"
+    },
+    {
+      "name": "eisenhower-prioritization",
+      "source": "./plugins/eisenhower-prioritization",
+      "description": "Eisenhower Matrix-based task prioritization for any workload",
+      "version": "0.1.0",
+      "author": {
+        "name": "Bonfires"
+      },
+      "repository": "https://github.com/alejandrosaenz117/bonfires-marketplace/tree/main/plugins/eisenhower-prioritization",
+      "license": "MIT",
+      "keywords": [
+        "productivity",
+        "prioritization",
+        "eisenhower",
+        "task-management"
+      ],
+      "category": "productivity"
     }
   ]
 }
