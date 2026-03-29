@@ -152,3 +152,52 @@ Use this context to tailor recommendations, but always stick to the core Eisenho
 2. **Explain trade-offs.** "Q2 automation takes 3 weeks upfront but saves 80 hours/month once live."
 3. **Surface patterns.** If all Q3 items involve similar issues, flag that as a process problem.
 4. **Name the health problem.** If Q1 dominates, don't soften it — say "this is unsustainable and will cause burnout."
+
+## Complete Example
+
+**Input:** "We have 3 active incidents, vendor assessment due Friday, 15 medium-priority backlog items, 2 architecture reviews pending, quarterly compliance audit, infrastructure refactor we've been delaying, team training on new framework, and 5 low-value status meeting prep items."
+
+**Output:**
+
+```
+┌─────────────────────────────┬─────────────────────────────┐
+│  Q1: DO NOW                 │  Q2: SCHEDULE               │
+│  Urgent + Important         │  Important, Not Urgent      │
+│  ─────────────────────────  │  ─────────────────────────  │
+│  • 3 active incidents       │  • Infrastructure refactor  │
+│  • Vendor assessment (Fri)  │  • Team training (Q2 skill) │
+│  • Quarterly compliance     │  • Architecture reviews     │
+│                             │  • Process standardization  │
+├─────────────────────────────┼─────────────────────────────┤
+│  Q3: DELEGATE/AUTOMATE      │  Q4: DELETE                 │
+│  Urgent, Not Important      │  Not Urgent, Not Important  │
+│  ─────────────────────────  │  ─────────────────────────  │
+│  • 15 backlog items (triage)│  • Status meeting prep (5)  │
+│                             │                             │
+└─────────────────────────────┴─────────────────────────────┘
+```
+
+**Narrative Summary:**
+
+Your backlog shows a 33% Q1 load, which is healthy but indicates you're operating in response mode on incidents and compliance. The good news: your Q2 contains high-leverage items. The infrastructure refactor prevents future Q1 incidents; team training multiplies your capacity on the refactored platform. Your Q4 (status meetings) is time theft — those 5 items represent ~3 hours/week of stakeholder bloat.
+
+**Actionable Recommendations:**
+
+**Q1:** Resolve incidents sequentially by impact (biggest user blast radius first). Vendor assessment and compliance audit run in parallel with incident triage — delegate one to a team member if capacity allows.
+
+**Q2:** Protect calendar for infrastructure refactor *first* (4-6 week sprint); it's the highest ROI item preventing future Q1 crises. Pair team training with refactor completion (people learn by building). Architecture reviews can start in week 3 in parallel.
+
+**Q3:** Your 15 backlog items need triage. Are they customer-facing fixes (reframe as Q1) or feature requests (move to Q2 or Q4)? Batch-triage them in 30 minutes rather than addressing ad-hoc.
+
+**Q4:** Kill status meeting prep entirely. Replace with a 5-minute async update in Slack. Reclaim 3 hours/week.
+
+**Flagged Items:**
+
+**Backlog Items [?]**
+- **Current placement:** Q3 (likely)
+- **Why it's ambiguous:** You didn't specify which are customer-facing vs. feature requests
+- **Clarifying questions:**
+  1. How many are customer-reported bugs vs. backlog feature requests?
+  2. Are any blocking a roadmap milestone?
+- **Note:** If customer-facing, move to Q1. If milestone-blocking, move to Q2. Otherwise, Q3/Q4 triage.
+```

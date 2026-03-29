@@ -8,6 +8,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ## Eisenhower Prioritization Plugin
 
+## [0.1.1] - 2026-03-29
+
+### Changed
+
+- **Complete example output:** Added end-to-end example showing input → matrix → narrative → recommendations → flagged items output
+- **Output format clarification:** Documented exact formatting for all four sections with real-world scenario
+
 ## [0.1.0] - 2026-03-29
 
 ### Added
@@ -32,6 +39,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ---
 
 ## OSV Scanner Plugin
+
+## [0.1.1] - 2026-03-29
+
+### Changed
+
+- **Decision tree guidance:** Added explicit scan vs. triage decision tree showing when to use each mode
+- **Output format examples:** Added complete example outputs for both scan (severity-grouped findings) and triage (reachability verdicts) modes
+- **Triage heuristics documentation:** Clarified evidence requirements, transitive dependency handling, dynamic code patterns, and high-severity suppression rules
 
 ## [0.1.0] - 2026-02-27
 
@@ -59,6 +74,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ---
 
 ## The Devil's Advocate Plugin
+
+## [0.2.2] - 2026-03-29
+
+### Changed
+
+- **Anti-patterns codification:** Added comprehensive anti-patterns section with "DO NOT" and "DO THIS INSTEAD" examples for generic advice, reassurance language, and style concerns
+- **Mandate hardening:** Explicit "Non-Negotiable Mandate" section with clear "will NEVER" and "will ALWAYS" constraints
+- **Judgment call guidance:** Added reasoning patterns for borderline findings, non-threatening findings, cascading failures, and multi-system impacts
+- **Specificity guardrails:** Added before/after examples showing vague vs. scoped mitigations
 
 ## [0.2.1] - 2026-03-29
 
