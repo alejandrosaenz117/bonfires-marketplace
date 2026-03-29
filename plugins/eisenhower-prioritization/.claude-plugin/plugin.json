@@ -1,0 +1,24 @@
+{
+  "name": "eisenhower-prioritization",
+  "version": "0.1.0",
+  "description": "Eisenhower Matrix-based task prioritization for any workload",
+  "author": "Bonfires",
+  "skillPath": "skills",
+  "commandPath": "commands",
+  "skills": [
+    {
+      "id": "eisenhower-prioritization",
+      "name": "eisenhower-prioritization",
+      "description": "Prioritize any workload using the Eisenhower Matrix. Use this when you have a list of tasks, incidents, findings, or workload context and need to decide what to focus on. Categorizes work into Urgent+Important (Q1: do now), Important+NotUrgent (Q2: schedule), Urgent+NotImportant (Q3: delegate), and Neither (Q4: delete). Accepts freeform input: Jira summaries, meeting notes, sprint dumps, bullet lists, or prose descriptions.",
+      "model": "inherit"
+    }
+  ],
+  "commands": [
+    {
+      "id": "prioritize",
+      "name": "prioritize",
+      "description": "Explicitly trigger prioritization with optional path/context",
+      "model": "inherit"
+    }
+  ]
+}
