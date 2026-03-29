@@ -53,6 +53,9 @@ docs/
 
 # Skill creator validation workspaces (test results, benchmarks)
 *-workspace/
+**/*-workspace/
+validation-tests/
+**/validation-tests/
 evals.json
 eval_metadata.json
 timing.json
@@ -60,3 +63,12 @@ grading.json
 benchmark.json
 benchmark.md
 feedback.json
+
+# Skill creator validation reports
+VALIDATION_REPORT*.md
+*VALIDATION*.md
+*VALIDATION*.txt
+OSVSCAN_VALIDATION*.txt
+SKILL_VALIDATION*.md
+VALIDATION_*.md
+NEXT_STEPS.md
