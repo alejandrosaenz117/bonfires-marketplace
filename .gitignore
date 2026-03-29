@@ -50,3 +50,6 @@ test-results/
 
 # Superpowers docs (plans, specs, scratch work)
 docs/
+
+# Skill creator validation workspaces (test results, benchmarks)
+*-workspace/

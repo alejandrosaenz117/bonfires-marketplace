@@ -6,6 +6,31 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ---
 
+## Eisenhower Prioritization Plugin
+
+## [0.1.0] - 2026-03-29
+
+### Added
+
+- Initial release of the Eisenhower Prioritization plugin
+- Generic task prioritization skill for any workload (AppSec, product management, operations, engineering leadership)
+- Two invocation surfaces:
+  - **Skill** (contextual trigger): Activates on prioritization phrases like "help me prioritize", "what should I focus on", "I'm overwhelmed with work"
+  - **Command** (`/prioritize`): Explicit on-demand invocation with optional task list or file input
+- Four-component output structure:
+  - Eisenhower Matrix: 2×2 grid with tasks classified into Q1/Q2/Q3/Q4 quadrants
+  - Narrative Summary: Interpretation of distribution, health check, leverage points, structural insights
+  - Actionable Recommendations: Per-quadrant guidance (do, schedule, delegate, delete) with concrete effort estimates and timelines
+  - Flagged Items: Ambiguous tasks with clarifying questions for refinement
+- Classification heuristics for confident categorization based on urgency and importance axes
+- Ambiguity handling: Tasks that don't clearly fit are flagged with [?] and include 1-2 clarifying questions
+- Pattern recognition: Identifies burnout risks, reactive posture, high-leverage Q2 investments, and structural waste
+- Model strategy: `inherit` (respects user's baseline model)
+- Comprehensive testing: 4 test cases covering simple brain dumps, ambiguous tasks, structured lists, and strategic insights
+- Full documentation: README with usage examples, output format, installation instructions
+
+---
+
 ## OSV Scanner Plugin
 
 ## [0.1.0] - 2026-02-27

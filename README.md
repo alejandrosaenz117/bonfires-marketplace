@@ -37,6 +37,14 @@ Integrates OSV Scanner as an MCP server, giving Claude direct access to the OSV 
 
 See [plugins/osv-scanner/README.md](plugins/osv-scanner/README.md) for full documentation.
 
+### Eisenhower Prioritization
+
+Before the collapse, there is choice. The manager who cannot distinguish the urgent from the important becomes a captive of the fire. This skill separates signal from noise: which battles matter, which are illusions, and which investments prevent the next disaster. It names the burnout, exposes the waste, and reveals the Q2 work that breaks the reactive cycle.
+
+**Invoke:** Mention "help me prioritize", "what should I focus on", or "I'm overwhelmed" when drowning in tasks, or use `/prioritize [task list]` command.
+
+See [plugins/eisenhower-prioritization/README.md](plugins/eisenhower-prioritization/README.md) for full documentation.
+
 ## Philosophy
 
 See the darkness before it sees you. Challenge consensus. Find what will break before you go hollow.
