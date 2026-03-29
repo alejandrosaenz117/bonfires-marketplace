@@ -1,6 +1,8 @@
-# Eisenhower Prioritization
+![Eisenhower Prioritization Banner](./banner.png)
 
-Eisenhower Matrix-based task prioritization for any team or workload.
+**A Claude Code plugin for task prioritization across any workload.**
+
+Before the collapse, there is choice. The manager who cannot distinguish the urgent from the important becomes a captive of the fire. This skill separates signal from noise: which battles matter, which are illusions, and which investments prevent the next disaster. It names the burnout, exposes the waste, and reveals the Q2 work that breaks the reactive cycle.
 
 ## What It Does
 
