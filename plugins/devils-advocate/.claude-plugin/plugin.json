@@ -1,5 +1,6 @@
 {
   "name": "devils-advocate",
+  "version": "0.1.0",
   "description": "Adversarial security and architectural code review. Finds the most plausible security failure in your code.",
   "author": {
     "name": "Alejandro Saenz",

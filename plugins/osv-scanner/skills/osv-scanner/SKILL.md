@@ -1,6 +1,6 @@
 ---
 name: osv-scanner
-description: This skill should be triggered when the user asks about dependency security, vulnerability scanning, or package safety. Examples: "check my dependencies for vulnerabilities", "scan my packages", "are my dependencies safe", "dependency audit", "check for CVEs", "security audit", "vulnerable packages", "scan dependencies for vulnerabilities".
+description: "This skill should be triggered when the user asks about dependency security, vulnerability scanning, or package safety. Examples: \"check my dependencies for vulnerabilities\", \"scan my packages\", \"are my dependencies safe\", \"dependency audit\", \"check for CVEs\", \"security audit\", \"vulnerable packages\", \"scan dependencies for vulnerabilities\"."
 ---
 
 # Scan Dependencies for Vulnerabilities
