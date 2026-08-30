@@ -26,7 +26,7 @@ This plugin integrates [OSV Scanner](https://github.com/google/osv-scanner) as a
 
 - Deterministic call graph analysis (use osv-scanner's native `--call-analysis` for Go/Rust)
 - Runtime or dynamic analysis
-- Replace human security review for CRITICAL findings
+- Replace human security review
 
 ---
 

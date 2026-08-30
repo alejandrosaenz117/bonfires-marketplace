@@ -1,7 +1,6 @@
 ---
 description: AI-powered reachability triage for dependency vulnerabilities. Scans for CVEs then searches your source code to estimate whether each vulnerable API is actually called. Outputs a prioritized FOUND_IN_SOURCE / UNCERTAIN / NOT_FOUND_IN_GREP report.
 argument-hint: [path]
-allowed-tools: Read, Glob, Grep
 ---
 
 # AI Reachability Triage for Dependencies
