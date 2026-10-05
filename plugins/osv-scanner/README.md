@@ -192,7 +192,6 @@ plugins/osv-scanner/
 ├── skills/
 │   └── osv-scanner/
 │       └── SKILL.md             # Contextual auto-triggered skill
-├── banner.png                   # Plugin banner
 └── README.md                    # This file
 ```
 
