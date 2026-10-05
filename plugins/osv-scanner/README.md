@@ -155,11 +155,11 @@ This plugin registers `osv-scanner experimental-mcp` as an MCP server. Claude ca
 ## Data and Network Use
 
 - **What runs:** the locally installed `osv-scanner` binary, started over stdio by Claude Code. The plugin bundles no executables and installs no packages.
-- **What leaves your machine:** to look up vulnerabilities, osv-scanner sends package names, versions, and ecosystems (and commit hashes for Git-based dependencies) from your lockfiles to the OSV API at `api.osv.dev`. Your source code is never sent. The triage command searches your source locally with grep.
+- **What leaves your machine:** to look up vulnerabilities, osv-scanner sends package names, versions, and ecosystems (and, for some dependency types, commit hashes) from your lockfiles to the OSV API at `api.osv.dev`, and requests advisories by vulnerability ID. Your source code is never sent. The triage command searches your source locally with grep.
 - **What is stored:** the plugin stores nothing. Scan results exist only in your Claude Code session.
 - **Credentials:** none are read or required.
 
-See the [OSV Scanner documentation](https://google.github.io/osv-scanner/) for details on its network behavior and offline mode.
+See [PRIVACY.md](./PRIVACY.md) for the full privacy policy, and the [OSV Scanner documentation](https://google.github.io/osv-scanner/) for details on the underlying tool.
 
 ---
 
