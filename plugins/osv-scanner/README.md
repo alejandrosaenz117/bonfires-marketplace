@@ -159,7 +159,7 @@ This plugin registers `osv-scanner experimental-mcp` as an MCP server. Claude ca
 - **What is stored:** the plugin stores nothing. Scan results exist only in your Claude Code session.
 - **Credentials:** none are read or required.
 
-See the [OSV Scanner documentation](https://google.github.io/osv-scanner/) for details on its network behavior and offline mode.
+See [PRIVACY.md](./PRIVACY.md) for the full privacy policy, and the [OSV Scanner documentation](https://google.github.io/osv-scanner/) for details on its network behavior and offline mode.
 
 ---
 

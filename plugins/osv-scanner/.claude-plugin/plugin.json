@@ -7,6 +7,8 @@
     "url": "https://github.com/alejandrosaenz117"
   },
   "license": "MIT",
+  "privacyPolicyUrl": "https://github.com/alejandrosaenz117/bonfires-marketplace/blob/main/plugins/osv-scanner/PRIVACY.md",
+  "supportUrl": "https://github.com/alejandrosaenz117/bonfires-marketplace/issues",
   "homepage": "https://github.com/alejandrosaenz117/bonfires-marketplace",
   "repository": "https://github.com/alejandrosaenz117/bonfires-marketplace",
   "keywords": [
