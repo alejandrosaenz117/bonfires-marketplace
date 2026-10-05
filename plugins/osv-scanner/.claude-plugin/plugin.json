@@ -1,6 +1,6 @@
 {
   "name": "osv-scanner",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Scans project dependencies for known vulnerabilities using OSV Scanner and the OSV database.",
   "author": {
     "name": "Alejandro Saenz",
